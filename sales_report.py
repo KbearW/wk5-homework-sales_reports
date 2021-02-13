@@ -4,21 +4,20 @@
 salespeople = []
 melons_sold = []
 
-f = open('sales-report.txt')
-for line in f:
-    line = line.rstrip()
-    entries = line.split('|')
+with open ('sales-report.txt', 'r') as f:
+    for line in f:
+        entries = line.rstrip().split('|')
 
-    salesperson = entries[0]
-    melons = int(entries[2])
+        salesperson = entries[0]
+        melons = int(entries[2])
 
-    if salesperson in salespeople:
-        position = salespeople.index(salesperson)
-
-        melons_sold[position] += melons
-    else:
-        salespeople.append(salesperson)
-        melons_sold.append(melons)
+        if salesperson in salespeople:
+            position = salespeople.index(salesperson)
+            melons_sold[position] += melons
+            
+        else:
+            salespeople.append(salesperson)
+            melons_sold.append(melons)
 
 
 for i in range(len(salespeople)):
